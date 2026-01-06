@@ -5,7 +5,7 @@ import '../enums/turbo_page_transition_type.dart';
 
 /// Abstract base class for router services.
 /// Projects should extend this to provide their own route configuration.
-abstract class TurboRouterService with Loglytics {
+abstract class TurboRouterService with Turbolytics {
   /// The main GoRouter instance
   GoRouter get router;
 

@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:turbolytics/turbolytics.dart';
 import 'turbo_view_arguments.dart';
 
-abstract class TurboBaseNavigation with Loglytics {
+abstract class TurboBaseNavigation with Turbolytics {
   /// The root path for this navigation group
   String get root;
 
