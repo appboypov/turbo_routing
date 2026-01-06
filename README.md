@@ -1,39 +1,76 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# 🧭 Turbo Routing
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+[![Pub Version](https://img.shields.io/pub/v/turbo_routing?logo=dart&label=turbo_routing)](https://pub.dev/packages/turbo_routing)
+[![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+[![GitHub Stars](https://img.shields.io/github/stars/appboypov/turbo_routing?style=social)](https://github.com/appboypov/turbo_routing)
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+**Turbo Routing** is a routing abstraction layer over `go_router` for Flutter applications. It provides a clean, type-safe interface for navigation with support for custom transitions, route arguments, and navigation state management.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- **GoRouter Integration**: Built on top of the powerful `go_router` package
+- **Type-Safe Navigation**: Strongly typed route arguments and return values
+- **Custom Transitions**: Support for platform, custom, and modal page transitions
+- **Navigation Abstraction**: Clean API for common navigation operations (push, pop, go, replace)
+- **Context-Agnostic**: Works with BuildContext or NavigatorKey
 
-## Getting started
+## Installation
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add `turbo_routing` to your `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  turbo_routing: ^1.0.0
+```
+
+Then run:
+
+```bash
+flutter pub get
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
 ```dart
-const like = 'sample';
+import 'package:turbo_routing/turbo_routing.dart';
+
+// Extend TurboRouterService to create your router
+class MyRouterService extends TurboRouterService {
+  @override
+  GoRouter get router => _router;
+  
+  @override
+  GlobalKey<NavigatorState> get rootNavigatorKey => _navigatorKey;
+  
+  @override
+  void onRouteChanged({String? location}) {
+    log.info('Route changed to: $location');
+  }
+  
+  // Implement your routes...
+}
+
+// Use TurboBaseNavigation for navigation
+class MyNavigation extends TurboBaseNavigation {
+  @override
+  String get root => '/';
+  
+  void navigateToHome() {
+    go(location: '/home');
+  }
+}
 ```
 
-## Additional information
+## Example
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+Check the `/example` directory for a complete Flutter application demonstrating Turbo Routing features.
+
+## Contributing
+
+Contributions are welcome! Please open issues or pull requests on our [GitHub repository](https://github.com/appboypov/turbo_routing).
+
+## License
+
+This package is licensed under the BSD 3-Clause License. See the [LICENSE](LICENSE) file for details.
