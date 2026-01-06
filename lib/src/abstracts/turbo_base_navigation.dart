@@ -37,7 +37,8 @@ abstract class TurboBaseNavigation with Loglytics {
     if (context != null) {
       return context.push<T>(location, extra: extraArgs);
     } else if (navigatorKey != null) {
-      return navigatorKey.currentContext?.push<T>(location, extra: extraArgs) ?? Future<T?>.value(null);
+      return navigatorKey.currentContext?.push<T>(location, extra: extraArgs) ??
+          Future<T?>.value(null);
     } else {
       throw StateError('Either context or navigatorKey must be provided');
     }

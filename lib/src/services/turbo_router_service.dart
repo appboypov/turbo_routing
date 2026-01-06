@@ -51,7 +51,13 @@ class CustomTransitionPage<T> extends Page<T> {
   });
 
   final Widget child;
-  final Widget Function(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) transitionsBuilder;
+  final Widget Function(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child,
+  )
+  transitionsBuilder;
 
   @override
   Route<T> createRoute(BuildContext context) {
